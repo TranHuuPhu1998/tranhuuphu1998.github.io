@@ -1,63 +1,89 @@
-$(document).ready(function(){
-	const listItems = document.querySelectorAll('.list-item');
-	const lists = document.querySelectorAll('.list');
-	// const root = document.querySelector('.root');
-	// const cards = document.querySelectorAll('.root .list-item');
-	
-	let draggedItem = null;
-	let leave = null;
-	for (let i = 0; i < listItems.length; i++) {
-		const item = listItems[i];
-	
-		item.addEventListener('dragstart', function () {
-			draggedItem = item;
-			leave = this.parentNode;
-			
-			setTimeout(function () {
-				item.style.display = 'none';
-			}, 0)
-		});
-		
-		item.addEventListener('dragend', function (e) {
-			setTimeout(function () {
-				draggedItem.style.display = 'block';
-				draggedItem = null;
-			}, 0);
-		})
-	
-		for (let j = 0; j < lists.length; j ++) {
-			const list = lists[j];
-		
-			list.addEventListener('dragover', function (e) {
-				e.preventDefault();
-			});
-			
-			list.addEventListener('dragenter', function (e) {
-				e.preventDefault();
-				this.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
-			});
-	
-			list.addEventListener('dragleave', function (e) {
-				this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
-			});
-	
-			list.addEventListener('drop', function (e) {
-				this.append(draggedItem);
-	
-				if(this.children.length > 1 && !this.classList.contains('root')) {
-					leave.append(this.firstElementChild);
+
+$(document).ready(function() {
+	$('.root').mousewheel(function(e, delta) {
+		let _delta = 0;
+		if(delta < 0) {
+			_delta = delta - 100;
+		}else {
+			_delta = delta + 100;
+		}
+		this.scrollLeft -= _delta;
+		e.preventDefault();
+	});
+	const list1 = document.querySelector('.list1');
+	const list2 = document.querySelector('.list2');
+	const list3 = document.querySelector('.list3');
+	const list4 = document.querySelector('.list4');
+	const list5 = document.querySelector('.list5');
+	const root = document.querySelector('.root');
+
+	new Sortable(root, {
+		group: 'shared',
+		animation: 150,
+		ghostClass: 'drop-placeholder-class',
+	});
+	new Sortable(list1, {
+		group: 'shared',
+		animation: 150,
+		ghostClass: 'drop-placeholder-class',
+		onAdd: function(evt){
+			let from = evt.from;
+			let to = evt.to;
+			let item = evt.item;
+			swapCard(from, to, item);
+		}
+	});
+	new Sortable(list2, {
+		group: 'shared',
+		animation: 150,
+		ghostClass: 'drop-placeholder-class',
+		onAdd: function(evt){
+			let from = evt.from;
+			let to = evt.to;
+			let item = evt.item;
+			swapCard(from, to, item);
+		}
+	});
+	new Sortable(list3, {
+		group: 'shared',
+		animation: 150,
+		ghostClass: 'drop-placeholder-class',
+		onAdd: function(evt){
+			let from = evt.from;
+			let to = evt.to;
+			let item = evt.item;
+			swapCard(from, to, item);
+		}
+	});
+	new Sortable(list4, {
+		group: 'shared',
+		animation: 150,
+		ghostClass: 'drop-placeholder-class',
+		onAdd: function(evt){
+			let from = evt.from;
+			let to = evt.to;
+			let item = evt.item;
+			swapCard(from, to, item);
+		}
+	});
+	new Sortable(list5, {
+		group: 'shared',
+		animation: 150,
+		ghostClass: 'drop-placeholder-class',
+		onAdd: function(evt){
+			let from = evt.from;
+			let to = evt.to;
+			let item = evt.item;
+			swapCard(from, to, item);
+		}
+	});
+	function swapCard(from,to,item){
+		if(to.children.length > 1){
+			Array.from(to.children).forEach(function(element){
+				if(element.id != item.id){
+					from.append(element);
 				}
-	
-				this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
 			});
 		}
 	}
-	
-	// for(let i = 0; i < cards.length; i++) {
-	// 	const card = cards[i+1];
-	// 	const number = i+1;
-	// 	if(card){
-	// 		card.style.left = `${number * 100}px`;
-	// 	}
-	// }
 });
