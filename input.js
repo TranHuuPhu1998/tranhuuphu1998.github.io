@@ -2,12 +2,11 @@
 $(document).ready(function() {
 	loadInitHtml();
 	// var sessionStorage = window.sessionsessionStorage;
-	alert(sessionStorage.getItem('lists'));
+	alert(`test ${window.localStorage.getItem("lists")}`);
 	function loadInitHtml(){
 		let content = null;
-		if(sessionStorage){
-			content = sessionStorage.getItem("lists");
-		}
+		content = window.localStorage.getItem("lists");
+
 		if(content && document.getElementById("js-input-list")){
 			document.getElementById("js-input-list").innerHTML = content;
 		}
@@ -16,9 +15,8 @@ $(document).ready(function() {
 	document.getElementById("download-pdf").addEventListener("click", (e) => {
 			e.preventDefault();
 			let element = null;
-			if(sessionStorage){
-				element = sessionStorage.getItem("images");
-			}
+			element = window.localStorage.getItem("images");
+
 			let images = JSON.parse(element);
 			let src= '';
 			src += '<div style="display: flex;margin:0 auto;justify-content: space-between;"> ';
@@ -68,3 +66,7 @@ $(document).ready(function() {
 			}
 	})
 });
+
+window.onload = function() {
+	alert(`test ${window.localStorage.getItem("lists")}`);
+}

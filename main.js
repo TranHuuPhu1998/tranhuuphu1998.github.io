@@ -104,8 +104,8 @@ $(document).ready(function() {
 		Array.from(images).forEach(function(element){
 			imagePath.push(element.src);
 		});
-		sessionStorage.setItem("images", JSON.stringify(imagePath));
-		sessionStorage.setItem("lists", content);
+		window.localStorage.setItem("images", JSON.stringify(imagePath));
+		window.localStorage.setItem("lists", content);
 		window.location.href = "input.html";
 	}
 });
