@@ -8,7 +8,7 @@ $(document).ready(function() {
 	const list4 = document.querySelector('.list4');
 	const list5 = document.querySelector('.list5');
 	const root = document.querySelector('.root');
-
+	// var sessionStorage = window.sessionsessionStorage;
 	$(document).on('click', '.js-sure', onSaveData)
 
 	$('.root').mousewheel(function(e, delta) {
@@ -108,21 +108,18 @@ $(document).ready(function() {
 		let content = document.getElementById("js-list").innerHTML;
 		let images = document.querySelectorAll('.lists .img-card');
 		let imagePath = [];
+		
 		Array.from(images).forEach(function(element){
 			imagePath.push(element.src);
 		});
-		if(localStorage){
-			window.localStorage.setItem("images", JSON.stringify(imagePath));
-			window.localStorage.setItem("lists", content);
-		}
+		sessionStorage.setItem("images", JSON.stringify(imagePath));
+		sessionStorage.setItem("lists", content);
 		window.location.href = "input.html";
 	}
 
 	function loadInitHtml(){
 		let content = null;
-		if(localStorage){
-			content = window.localStorage.getItem("lists");
-		}
+		sessionStorage.getItem("lists");
 		if(content && document.getElementById("js-input-list")){
 			document.getElementById("js-input-list").innerHTML = content;
 		}
