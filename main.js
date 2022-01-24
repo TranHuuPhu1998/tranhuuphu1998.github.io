@@ -17,19 +17,12 @@ $(document).ready(function() {
 		this.scrollLeft -= _delta;
 		e.preventDefault();
 	});
-	// var mq = window.matchMedia( "(max-width: 570px)" );
-	// 	if (mq.matches) {
 
-	// 	}
-	// 	else {
-
-	// 	}
-		new Sortable(root, {
-			group: 'shared',
-			animation: 150,
-			ghostClass: 'drop-placeholder-class',
-			sort: false // To disable sorting: set sort to false
-		});
+	new Sortable(root, {
+		group: 'shared',
+		animation: 150,
+		ghostClass: 'drop-placeholder-class',
+	});
 	new Sortable(list1, {
 		group: 'shared',
 		animation: 150,

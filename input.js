@@ -1,8 +1,7 @@
 
 $(document).ready(function() {
 	loadInitHtml();
-	// var sessionStorage = window.sessionsessionStorage;
-	alert(`test ${window.localStorage.getItem("lists")}`);
+
 	function loadInitHtml(){
 		let content = null;
 		content = window.localStorage.getItem("lists");
@@ -66,7 +65,3 @@ $(document).ready(function() {
 			}
 	})
 });
-
-window.onload = function() {
-	alert(`test ${window.localStorage.getItem("lists")}`);
-}
