@@ -99,13 +99,13 @@ $(document).ready(function() {
 		Array.from(images).forEach(function(element){
 			imagePath.push(element.src);
 		});
-		localStorage.setItem("images", JSON.stringify(imagePath));
-		localStorage.setItem("lists", content);
+		window.localStorage.setItem("images", JSON.stringify(imagePath));
+		window.localStorage.setItem("lists", content);
 		window.location.href = "input.html";
 	}
 
 	function loadInitHtml(){
-		let content = localStorage.getItem("lists");
+		let content = window.localStorage.getItem("lists");
 		if(content && document.getElementById("js-input-list")){
 			document.getElementById("js-input-list").innerHTML = content;
 		}
