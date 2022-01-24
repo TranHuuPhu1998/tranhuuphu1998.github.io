@@ -3,7 +3,10 @@ $(document).ready(function() {
 	loadInitHtml();
 
 	function loadInitHtml(){
-		let content = window.localStorage.getItem("lists");
+		let content = null;
+		if(localStorage){
+			content = window.localStorage.getItem("lists");
+		}
 		if(content && document.getElementById("js-input-list")){
 			document.getElementById("js-input-list").innerHTML = content;
 		}
@@ -14,7 +17,10 @@ window.onload = function () {
 	document.getElementById("download-pdf")
 			.addEventListener("click", (e) => {
 					e.preventDefault();
-					let element = window.localStorage.getItem("images");
+					let element = null;
+					if(localStorage){
+						element = window.localStorage.getItem("images");
+					}
 					let images = JSON.parse(element);
 					let src= '';
 					src += '<div style="display: flex;margin:0 auto;justify-content: space-between;"> ';

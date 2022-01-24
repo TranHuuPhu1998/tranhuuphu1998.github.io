@@ -21,13 +21,25 @@ $(document).ready(function() {
 		this.scrollLeft -= _delta;
 		e.preventDefault();
 	});
+	var mq = window.matchMedia( "(max-width: 570px)" );
+		if (mq.matches) {
+				// window width is at less than 570px
+				new Sortable(root, {
+					group: 'shared',
+					animation: 150,
+					ghostClass: 'drop-placeholder-class',
+					sort: false // To disable sorting: set sort to false
+				});
+		}
+		else {
+				// window width is greater than 570px
+				new Sortable(root, {
+					group: 'shared',
+					animation: 150,
+					ghostClass: 'drop-placeholder-class',
+				});
+		}
 	
-	new Sortable(root, {
-		group: 'shared',
-		animation: 150,
-		ghostClass: 'drop-placeholder-class',
-	});
-
 	new Sortable(list1, {
 		group: 'shared',
 		animation: 150,
@@ -99,13 +111,18 @@ $(document).ready(function() {
 		Array.from(images).forEach(function(element){
 			imagePath.push(element.src);
 		});
-		window.localStorage.setItem("images", JSON.stringify(imagePath));
-		window.localStorage.setItem("lists", content);
+		if(localStorage){
+			window.localStorage.setItem("images", JSON.stringify(imagePath));
+			window.localStorage.setItem("lists", content);
+		}
 		window.location.href = "input.html";
 	}
 
 	function loadInitHtml(){
-		let content = window.localStorage.getItem("lists");
+		let content = null;
+		if(localStorage){
+			content = window.localStorage.getItem("lists");
+		}
 		if(content && document.getElementById("js-input-list")){
 			document.getElementById("js-input-list").innerHTML = content;
 		}
