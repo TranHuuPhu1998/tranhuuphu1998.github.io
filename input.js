@@ -2,9 +2,12 @@
 $(document).ready(function() {
 	loadInitHtml();
 	// var sessionStorage = window.sessionsessionStorage;
+	alert(sessionStorage.getItem('lists'));
 	function loadInitHtml(){
 		let content = null;
-		content = sessionStorage.getItem("lists");
+		if(sessionStorage){
+			content = sessionStorage.getItem("lists");
+		}
 		if(content && document.getElementById("js-input-list")){
 			document.getElementById("js-input-list").innerHTML = content;
 		}

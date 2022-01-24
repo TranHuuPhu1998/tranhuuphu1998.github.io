@@ -1,15 +1,11 @@
 
 $(document).ready(function() {
-	loadInitHtml();
-
 	const list1 = document.querySelector('.list1');
 	const list2 = document.querySelector('.list2');
 	const list3 = document.querySelector('.list3');
 	const list4 = document.querySelector('.list4');
 	const list5 = document.querySelector('.list5');
 	const root = document.querySelector('.root');
-	// var sessionStorage = window.sessionsessionStorage;
-	$(document).on('click', '.js-sure', onSaveData)
 
 	$('.root').mousewheel(function(e, delta) {
 		let _delta = 0;
@@ -21,25 +17,19 @@ $(document).ready(function() {
 		this.scrollLeft -= _delta;
 		e.preventDefault();
 	});
-	var mq = window.matchMedia( "(max-width: 570px)" );
-		if (mq.matches) {
-				// window width is at less than 570px
-				new Sortable(root, {
-					group: 'shared',
-					animation: 150,
-					ghostClass: 'drop-placeholder-class',
-					sort: false // To disable sorting: set sort to false
-				});
-		}
-		else {
-				// window width is greater than 570px
-				new Sortable(root, {
-					group: 'shared',
-					animation: 150,
-					ghostClass: 'drop-placeholder-class',
-				});
-		}
-	
+	// var mq = window.matchMedia( "(max-width: 570px)" );
+	// 	if (mq.matches) {
+
+	// 	}
+	// 	else {
+
+	// 	}
+		new Sortable(root, {
+			group: 'shared',
+			animation: 150,
+			ghostClass: 'drop-placeholder-class',
+			sort: false // To disable sorting: set sort to false
+		});
 	new Sortable(list1, {
 		group: 'shared',
 		animation: 150,
@@ -104,6 +94,8 @@ $(document).ready(function() {
 			});
 		}
 	}
+	$(document).on('click', '.js-sure', onSaveData)
+	
 	function onSaveData() {
 		let content = document.getElementById("js-list").innerHTML;
 		let images = document.querySelectorAll('.lists .img-card');
@@ -115,13 +107,5 @@ $(document).ready(function() {
 		sessionStorage.setItem("images", JSON.stringify(imagePath));
 		sessionStorage.setItem("lists", content);
 		window.location.href = "input.html";
-	}
-
-	function loadInitHtml(){
-		let content = null;
-		sessionStorage.getItem("lists");
-		if(content && document.getElementById("js-input-list")){
-			document.getElementById("js-input-list").innerHTML = content;
-		}
 	}
 });
