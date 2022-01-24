@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Game Card Html</title>
+	<link rel="stylesheet" href="main.css" />
+	<link rel="shortcut icon" href="games_control_pyramid.ico" />
+
+</head>
+<body>
+	<div class="app">
+		<div class="lists" id="js-input-list"></div>
+    <div class="input-wrapper">
+      <textarea class="input-people" placeholder="私がこのカードを選んだ理由は・・・"></textarea>
+      <div class="picture-people">
+        <img src="./people.png" alt="people">
+      </div>
+    </div>
+    <div class="btn-input-wrapper" id"ignorePDF">
+      <button class="btn-green mr-2" id="download-pdf">PDF</button>
+      <button class="btn-green" id="print" onclick="window.print()">プリント</button>
+    </div>
+    <script src="html2pdf.bundle.js"></script>
+	<script src="jquery.min.js"></script>
+	<script src="input.js"></script>
+	</body>
+</html>

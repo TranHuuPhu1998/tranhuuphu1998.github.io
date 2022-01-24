@@ -6,22 +6,30 @@
 
 body {
   background-image: url("./background.jpg");
-  height: 100vh;
+  min-height: 100vh;
   cursor:url(blue.cur), auto;
   background-repeat: no-repeat;
   background-size: cover;
-  font-family: "Roboto", Helvetica, sans-serif;
+  font-size: .8125rem;
+  font-weight: 400;
+  line-height: 1.5385;
+  margin: 0;
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .app {
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 100vh;
   justify-content: space-between;
   padding-top: 20px;
   padding-bottom: 20px;
 }
-
+.wapper-btn {
+  text-align: right;
+  padding-right: 50px;
+}
 .lists {
   display: flex;
   justify-content: center;
@@ -39,6 +47,9 @@ body {
   border: 2px solid #fff;
   border-radius: 10px;
   transition: all 0.2s linear;
+  background-size: 30%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .list-item {
   border-radius: 8px;
@@ -49,6 +60,7 @@ body {
 
 .list-item img {
   width: 200px;
+  height: 100%;
 }
 .root {
   display: flex;
@@ -72,8 +84,39 @@ body {
   width: 100%;
 }
 
+.btn-green {
+  background-color: #4cbf4c;
+  color: white;
+  font-weight: bold;
+  padding: 10px 40px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 50px;
+  font-size: 20px;
+}
+
 .drop-placeholder-class {
   background-color: rgba(225, 250, 143, 0.7);
+}
+
+.input-wrapper {
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-people {
+  width: 80%;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  outline: none;
+  text-indent: 10px;
+  padding: 10px;
+  font-size: 16px;
+}
+.btn-input-wrapper {
+  margin: 0 auto;
 }
 *::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -97,14 +140,96 @@ body {
     color-stop(0.86, rgb(28, 58, 148))
   );
 }
-
-
-@media only screen and (max-width: 1650px) {
-  .root {
+/* demo */
+.flex{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  position: relative;
+}
+.square{
+  width: 50px;
+  height: 50px;
+  background-color: #333;
+  color: #FAFAFA;
+  text-align: center;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.square:hover{
+  opacity: 0.8;
+}
+.rectangle{
+  background-color: #333;
+  margin: 10px 0;
+  padding: 20px;
+  width: 175px;
+  color: #FAFAFA;
+}
+.img-absolute{
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 56%;
+}
+.btn-download{
+  display: inline-block;
+  text-decoration: none;
+  background-color: salmon;
+  color: #FAFAFA;
+  padding: 10px 62px;
+  margin: 10px auto;
+}
+.btn-download:hover{
+  opacity: 0.8;
+}
+.list1 {
+  background-image: url(./number_one.png);
+}
+.list2 {
+  background-image: url(./number_two.png);
+}
+.list3 {
+  background-image: url(./number_three.png);
+}
+.list4 {
+  background-image: url(./number_four.png);
+}
+.list5 {
+  background-image: url(./number_five.png);
+}
+.mr-2 {
+  margin-right: 20px;
+}
+@media print {
+  .input-wrapper {
     width: calc(100% - 200px);
   }
   .lists {
     width: calc(100% - 200px);
+  }
+  .lists, .btn-input-wrapper {
+    width: calc(100% - 200px);
+  }
+  #download-pdf{
+    display: none;
+  }
+  #print{
+    display: none;
+  }
+}
+@media only screen and (max-width: 1650px) {
+  .root {
+    width: calc(100% - 400px);
+  }
+  .input-wrapper {
+    width: calc(100% - 400px);
+  }
+  .lists{
+    width: calc(100% - 400px);
+  }
+  .btn-input-wrapper {
+    width: calc(100% - 400px);
   }
   .lists .list img {
     width: 100%;
@@ -120,6 +245,12 @@ body {
   .lists {
     width: calc(100% - 100px);
   }
+  .input-wrapper {
+    width: calc(100% - 100px);
+  }
+  .btn-input-wrapper {
+    width: calc(100% - 100px);
+  }
 }
 
 @media only screen and (max-width: 1000px) {
@@ -129,9 +260,19 @@ body {
   .lists {
     width: calc(95%);
   }
+  .input-wrapper {
+    width: calc(95%);
+  }
+  .btn-input-wrapper {
+    width: calc(95%);
+  }
 }
 
 @media only screen and (max-width: 786px) {
+  .btn-input-wrapper {
+    justify-content: center;
+    display: flex;
+  }
   .lists .list {
     width: calc((100% / 3) - 10px);
     min-height: 250px;
@@ -150,12 +291,28 @@ body {
     margin-left: 10px;
     margin-top: 10px;
   }
+  .picture-people {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .picture-people img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .btn-green {
+    font-size: 16px;
+  }
 }
 
 @media only screen and (max-width: 414px) {
   .lists .list {
     height: 180px;
     min-height: 180px;
+  }
+  .picture-people {
+    width: 150px;
   }
 }
 @media only screen and (max-width: 393px) {
@@ -174,5 +331,8 @@ body {
   .lists .list {
     height: 162px;
     min-height: 162px;
+  }
+  .picture-people {
+    width: 100px;
   }
 }
