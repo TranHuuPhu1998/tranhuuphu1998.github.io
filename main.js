@@ -101,4 +101,19 @@ $(document).ready(function() {
 		window.localStorage.setItem("lists", content);
 		window.location.href = "input.html";
 	}
+
+	var box = $(".box-inner"), x;
+	$(".arrow").click(function() {
+		if ($(this).hasClass("arrow-right")) {
+			x = ((box.width() / 2)) + box.scrollLeft();
+			box.animate({
+				scrollLeft: x,
+			})
+		} else {
+			x = ((box.width() / 2)) - box.scrollLeft();
+			box.animate({
+				scrollLeft: -x,
+			})
+		}
+	})
 });
